@@ -8,4 +8,5 @@ public interface ExerciseService {
 	
 	List<Exercise> index();
 	
+	Exercise findOneExerciseById(int id);
 }
