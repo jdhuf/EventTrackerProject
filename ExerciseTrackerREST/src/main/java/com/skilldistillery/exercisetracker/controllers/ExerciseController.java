@@ -31,8 +31,14 @@ public class ExerciseController {
 	}
 	
 	@GetMapping("exercise/{id}")
-	public Exercise listExerciseById(@PathVariable int id){
+	public Exercise listExerciseById(@PathVariable int id, HttpServletResponse res){
+		if (es.findOneExerciseById(id) == null) {
+			res.setStatus(404);
+		} else {
+		
 		return es.findOneExerciseById(id);
+		}
+		return null;
 	}
 	
 	@PostMapping("exercise")

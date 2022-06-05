@@ -35,8 +35,7 @@ public class ExerciseServiceImpl implements ExerciseService {
 
 	@Override
 	public Exercise addNewExercise(Exercise exercise) {
-		
-		
+
 		return er.saveAndFlush(exercise);
 	}
 
@@ -45,9 +44,9 @@ public class ExerciseServiceImpl implements ExerciseService {
 		exercise = er.saveAndFlush(exercise);
 		return exercise;
 	}
-	
+
 	@Override
-	public boolean deleteExercise(int id) {
+	public Boolean deleteExercise(int id) {
 		er.deleteById(id);
 		boolean deleted = !er.existsById(id);
 		return deleted;

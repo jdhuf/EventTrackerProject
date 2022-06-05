@@ -23,6 +23,9 @@ DROP TABLE IF EXISTS `exercise` ;
 CREATE TABLE IF NOT EXISTS `exercise` (
   `id` INT NOT NULL AUTO_INCREMENT,
   `name` VARCHAR(45) NOT NULL,
+  `repetitions` INT NOT NULL,
+  `duration` INT NOT NULL,
+  `distance` INT NOT NULL,
   PRIMARY KEY (`id`))
 ENGINE = InnoDB;
 
@@ -42,8 +45,10 @@ SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS;
 -- -----------------------------------------------------
 START TRANSACTION;
 USE `exercisetrackerdb`;
-INSERT INTO `exercise` (`id`, `name`) VALUES (1, 'pullups');
-INSERT INTO `exercise` (`id`, `name`) VALUES (2, 'pushups');
+INSERT INTO `exercise` (`id`, `name`, `repetitions`, `duration`, `distance`) VALUES (1, 'pullups', 13, 0, 0);
+INSERT INTO `exercise` (`id`, `name`, `repetitions`, `duration`, `distance`) VALUES (2, 'pushups', 5, 0, 0);
+INSERT INTO `exercise` (`id`, `name`, `repetitions`, `duration`, `distance`) VALUES (3, 'running', 2, 0, 0);
+INSERT INTO `exercise` (`id`, `name`, `repetitions`, `duration`, `distance`) VALUES (4, 'biking', 0, 13, 0);
 
 COMMIT;
 
