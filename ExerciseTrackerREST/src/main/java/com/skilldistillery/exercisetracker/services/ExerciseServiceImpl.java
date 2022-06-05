@@ -40,4 +40,17 @@ public class ExerciseServiceImpl implements ExerciseService {
 		return er.saveAndFlush(exercise);
 	}
 
+	@Override
+	public Exercise updateExercise(Exercise exercise) {
+		exercise = er.saveAndFlush(exercise);
+		return exercise;
+	}
+	
+	@Override
+	public boolean deleteExercise(int id) {
+		er.deleteById(id);
+		boolean deleted = !er.existsById(id);
+		return deleted;
+	}
+
 }

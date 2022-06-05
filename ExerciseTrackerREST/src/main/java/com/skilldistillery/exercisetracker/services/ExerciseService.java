@@ -11,4 +11,8 @@ public interface ExerciseService {
 	Exercise findOneExerciseById(int id);
 	
 	public Exercise addNewExercise(Exercise exercise);
+	
+	public Exercise updateExercise(Exercise exercise);
+	
+	public boolean deleteExercise(int id);
 }
