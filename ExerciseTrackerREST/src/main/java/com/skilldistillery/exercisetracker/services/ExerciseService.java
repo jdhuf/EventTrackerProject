@@ -9,4 +9,6 @@ public interface ExerciseService {
 	List<Exercise> index();
 	
 	Exercise findOneExerciseById(int id);
+	
+	public Exercise addNewExercise(Exercise exercise);
 }

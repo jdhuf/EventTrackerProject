@@ -33,4 +33,11 @@ public class ExerciseServiceImpl implements ExerciseService {
 		return null;
 	}
 
+	@Override
+	public Exercise addNewExercise(Exercise exercise) {
+		
+		
+		return er.saveAndFlush(exercise);
+	}
+
 }
