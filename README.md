@@ -24,15 +24,15 @@ Expected Routes
 
 | Return Type       | Route                                         | Functionality                    |  
 |-------------------|-----------------------------------------------|----------------------------------|
-|`List<Exercise>`    |`GET   http://localhost:8083/api/exercise`        |`Find all exercises`              	   |
+|`List<Exercise>`     |`GET   http://localhost:8083/api/exercise`        |`Find all exercises`              	   |
 |
-|`Exercise`          |`GET   http://localhost:8083/api/exercise/{id}`    |`Find one exercise by id`            |
+|`Exercise`           |`GET   http://localhost:8083/api/exercise/{id}`    |`Find one exercise by id`            |
 |
-|`Exercise`         |`POST  http://localhost:8083/api/exercise `    		|`Creates a new exercises`           	|
+|`Exercise`          |`POST  http://localhost:8083/api/exercise `    		|`Creates a new exercises`           	|
 |
-|`Exercise`         |`PUT   http://localhost:8083/api/exercise/{id}`		|`Updates an existing exercise by id`	|
+|`Exercise`          |`PUT   http://localhost:8083/api/exercise/{id}`		 |`Updates an existing exercise by id`	|
 |
-|`Exercise`       |`VOID  http://localhost:8083/api/exercise/{id}`		|`Deletes an existing exercise by id`  	|
+|`Exercise`           |`VOID  http://localhost:8083/api/exercise/{id}`		|`Deletes an existing exercise by id`  	|
 
 ##Lessons Learned
 
