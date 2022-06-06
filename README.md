@@ -35,4 +35,5 @@ Expected Routes
 | `Exercise`       |`VOID  http://localhost:8083/api/exercise/{id}`		|`Deletes an existing exercise by id`  		|
 
 ##Lessons Learned
+
 Through this assignment I gained a better understanding of the relationship between controllers, services, and repositories. I also gained a better understanding of how to test CRUD operations using Postman.
