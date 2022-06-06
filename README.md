@@ -4,7 +4,7 @@ Testing REST API CRUD Operations
 ### Description
 This program allows a user to track exercise. The code is in the first stages of development and currently has one entity called exercise that corresponds to a table called exercise in a database. The code uses REST API to operate CRUD (Create, Read, Update, Delete) functions.
 
-## echnology Used
+## Technology Used
 * Java
 * SpringToolSuite4
 * Spring Boot
