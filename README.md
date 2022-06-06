@@ -4,7 +4,7 @@ Testing REST API CRUD Operations
 ### Description
 This program allows a user to track exercise. The code is in the first stages of development and currently has one entity called exercise that corresponds to a table called exercise in a database. The code uses REST API to operate CRUD (Create, Read, Update, Delete) functions.
 
-##Technology Used
+## echnology Used
 * Java
 * SpringToolSuite4
 * Spring Boot
@@ -34,6 +34,6 @@ Expected Routes
 |
 |`Exercise`           |`VOID  http://localhost:8083/api/exercise/{id}`		|`Deletes an existing exercise by id`  	|
 
-##Lessons Learned
+## Lessons Learned
 
 Through this assignment I gained a better understanding of the relationship between controllers, services, and repositories. I also gained a better understanding of how to test CRUD operations using Postman.
