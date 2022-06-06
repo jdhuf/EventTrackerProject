@@ -22,13 +22,17 @@ The routes necessary for testing the operations are listed below.
 
 Expected Routes
 
-| Return Type       | Route                                         | Functionality                  |  
-______________________________________________________________________________________________________
-| List<Exercise>    | GET   http://localhost:8083/api/exercise      | Find all exercises                 |
-| Exercise          | GET   http://localhost:8083/api/exercise/{id} | Find one exercise by id            |
-| Exercise          | POST  http://localhost:8083/api/exercise      | Creates a new exercises            |
-| Exercise          | PUT   http://localhost:8083/api/exercise/{id} | Updates an existing exercise by id |
-| Exercise          | VOID  http://localhost:8083/api/exercise/{id} | Deletes an existing exercise by id |
+| Return Type       | Route                                         | Functionality                    |  
+|-------------------|-----------------------------------------------|----------------------------------|
+|`List<Exercise>`    |`GET   http://localhost:8083/api/exercise`        |`Find all exercises`              	   |
+|
+| `Exercise`       | `GET   http://localhost:8083/api/exercise/{id}` 		| `Find one exercise by id`          |
+|
+| `Exercise`      | `POST  http://localhost:8083/api/exercise `    		| `Creates a new exercises`           	|
+|
+| `Exercise`      |`PUT   http://localhost:8083/api/exercise/{id}`		| `Updates an existing exercise by id`	|
+|
+| `Exercise`       |`VOID  http://localhost:8083/api/exercise/{id}`		|`Deletes an existing exercise by id`  		|
 
 ##Lessons Learned
 Through this assignment I gained a better understanding of the relationship between controllers, services, and repositories. I also gained a better understanding of how to test CRUD operations using Postman.
