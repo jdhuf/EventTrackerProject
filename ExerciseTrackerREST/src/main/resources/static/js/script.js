@@ -3,17 +3,58 @@ window.addEventListener('load', function(e){
 });
 
 function init(){
-	document.exerciseForm.findExerciseButton.addEventListener('click', function(event) {
+	findExerciseById();
+	loadExerciseList();
+	loadNewExercise();
+	}
+
+function loadNewExercise(){
+	document.newExerciseForm.addNewExerciseButton.addEventListener('click', createExercise);
+}
+
+function createExercise(e){
+	e.preventDefault();
+	let form = document.newExerciseForm;
+	let newExercise = {
+		name: form.name.value,
+		distance: form.distance.value,
+		duration: form.duration.value,
+		repetitions: form.repetitions.value
+	}
+	sendNewExercise(newExercise);	
+	
+}
+
+function sendNewExercise(newExercise){
+	let xhr = new XMLHttpRequest();
+	xhr.open('POST', 'api/exercise', true);
+
+	xhr.onreadystatechange = function() {
+  	if (xhr.readyState === 4 ) {
+    	if ( xhr.status == 200 || xhr.status == 201 ) { 
+      	let newExercise = JSON.parse(xhr.responseText);
+      	console.log(newExercise);
+      	displayExercise(newExercise);
+    }
+    else {
+      	displayError("Error creating exercise: " + xhr.status + xhr.statusText);
+    }
+  }
+};
+	xhr.setRequestHeader("Content-type", "application/json"); 
+	xhr.send(JSON.stringify(newExercise));
+	
+}
+
+function findExerciseById() {
+		document.exerciseForm.findExerciseButton.addEventListener('click', function(event) {
 		event.preventDefault();
 		let exerciseId = document.exerciseForm.exerciseId.value;
 		if (!isNaN(exerciseId) && exerciseId > 0) {
 			getExercise(exerciseId);
 		}
-	});
-	loadExerciseList();
-
+	});}
 	
-}
 
 function loadExerciseList(){
 	let xhr = new XMLHttpRequest();
