@@ -30,7 +30,7 @@
 	<h4>Find Exercise By Id</h4>
 	
 	<form name="exerciseForm">
-	<label for="findByIdField">Please Enter Id Number</label><br>
+		<label for="findByIdField">Please Enter Id Number</label><br>
 		<input type="number" name="exerciseId"><br><br>
 		<button name="findExerciseButton">Find Exercise</button>
 	
@@ -44,6 +44,7 @@
 	<h4>Add New Exercise</h4>
 	
 	<form name="newExerciseForm">
+		
 		<label for="name">Exercise Name</label><br>
 		<input type="text" name="name"><br><br>
 		
@@ -59,8 +60,38 @@
 	
 	
 		</form>
+		
+		<h4>Update Exercise</h4>
 	
-
+	<form name="updateExerciseForm">
+		<label for="deleteExercise_IdField">Please Enter Id Number</label><br>
+		<input type="number" name="exerciseId"><br><br>
+	
+	
+		<label for="name">Exercise Name</label><br>
+		<input type="text" name="name"><br><br>
+		
+		<label for="distance">Exercise Distance</label><br>
+		<input type="text" name="distance"><br><br>
+		
+		<label for="duration">Exercise Duration</label><br>
+		<input type="text" name="duration"><br><br>
+		
+		<label for="repetitions">Exercise Repetitions</label><br>
+		<input type="text" name="repetitions"><br><br>
+		<button name="updateExerciseButton">Update Exercise</button>
+	
+	
+		</form>
+	
+	<h4>Delete Exercise By Id</h4>
+	
+	<form name="deleteExerciseForm">
+	<label for="deleteByIdField">Please Enter Id of Exercise to Delete</label><br>
+		<input type="number" name="exerciseId"><br><br>
+		<button name="deleteExerciseButton">Delete Exercise</button>
+	
+	</form>
 	
 	
 	

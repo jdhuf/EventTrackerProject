@@ -6,10 +6,16 @@ function init(){
 	findExerciseById();
 	loadExerciseList();
 	loadNewExercise();
+	loadUpdatedExercise();
+	deleteExerciseById();
 	}
 
 function loadNewExercise(){
 	document.newExerciseForm.addNewExerciseButton.addEventListener('click', createExercise);
+}
+
+function loadUpdatedExercise() {
+	document.updateExerciseForm.updateExerciseButton.addEventListener('click', updateExercise);
 }
 
 function createExercise(e){
@@ -43,6 +49,54 @@ function sendNewExercise(newExercise){
 };
 	xhr.setRequestHeader("Content-type", "application/json"); 
 	xhr.send(JSON.stringify(newExercise));
+	
+}
+
+function displayError(message) {
+	let dataDiv = document.getElementById('exerciseData');
+	dataDiv.textContent = '';
+	dataDiv.textContent = message;
+}
+
+function updateExercise(e){
+	e.preventDefault();
+	let form = document.updateExerciseForm;
+	let updatedExercise = {
+		id: form.exerciseId.value,
+		name: form.name.value,
+		distance: form.distance.value,
+		duration: form.duration.value,
+		repetitions: form.repetitions.value
+	}
+	console.log(updatedExercise);
+	sendUpdatedExercise(updatedExercise);	
+	
+}
+
+function sendUpdatedExercise(updatedExercise){
+	
+	let exerciseIdToUpdate = document.updateExerciseForm.exerciseId.value;
+	let xhr = new XMLHttpRequest();
+	xhr.open('PUT', 'api/exercise/' + exerciseIdToUpdate, true);
+
+	xhr.onreadystatechange = function() {
+  	if (xhr.readyState === 4 ) {
+	console.log('line 82 hi')
+	console.log(xhr.status + 'line 83')
+    	if ( xhr.status == 400 || xhr.status == 201 ) { 
+		console.log('line 84 hi')
+      	let updatedExercise = JSON.parse(xhr.responseText);
+      	console.log(updatedExercise);
+      	displayExercise(updatedExercise);
+    }
+    else {
+      	displayError("Error updating exercise: " + xhr.status + xhr.statusText);
+    }
+  }
+};
+	xhr.setRequestHeader("Content-type", "application/json"); 
+	console.log("hi");
+	xhr.send(updatedExercise);
 	
 }
 
@@ -145,3 +199,37 @@ function displayExercise(exercise) {
 	dataDiv.appendChild(ul);
 
 }
+
+
+function deleteExerciseById() {
+		document.deleteExerciseForm.deleteExerciseButton.addEventListener('click', function(event) {
+		event.preventDefault();
+		let exerciseToDeleteId = document.deleteExerciseForm.exerciseId.value;
+		if (!isNaN(exerciseToDeleteId ) && exerciseToDeleteId > 0) {
+			deleteExercise(exerciseToDeleteId);
+		}
+	});}
+
+function deleteExercise(exerciseToDeleteId) {
+	
+	
+	let xhr = new XMLHttpRequest();
+	xhr.open('DELETE', 'api/exercise/' + exerciseToDeleteId);
+	xhr.onreadystatechange = function() {
+		if (xhr.readyState === 4) {
+			if (xhr.status === 200 && xhr.responseText) {
+				let exercise = JSON.parse(xhr.responseText);
+				displayExercise(exercise);
+
+			}
+			else {
+				displayError('Exercise not found.');
+
+			}
+
+		}
+	}
+
+	xhr.send();
+}
+
