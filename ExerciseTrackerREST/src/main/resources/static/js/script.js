@@ -10,12 +10,20 @@ function init(){
 	deleteExerciseById();
 	}
 
-function loadNewExercise(){
-	document.newExerciseForm.addNewExerciseButton.addEventListener('click', createExercise);
+
+
+//------------------------------------Display Error------------------------------------------
+
+function displayError(message) {
+	let dataDiv = document.getElementById('exerciseData');
+	dataDiv.textContent = '';
+	dataDiv.textContent = message;
 }
 
-function loadUpdatedExercise() {
-	document.updateExerciseForm.updateExerciseButton.addEventListener('click', updateExercise);
+//---------------------------------------Create------------------------------------------------
+
+function loadNewExercise(){
+	document.newExerciseForm.addNewExerciseButton.addEventListener('click', createExercise);
 }
 
 function createExercise(e){
@@ -52,63 +60,73 @@ function sendNewExercise(newExercise){
 	
 }
 
-function displayError(message) {
-	let dataDiv = document.getElementById('exerciseData');
-	dataDiv.textContent = '';
-	dataDiv.textContent = message;
+//---------------------------------------------------Update--------------------------
+
+function loadUpdatedExercise() {
+	document.updateExerciseForm.updateExerciseButton.addEventListener('click', updateExercise);
 }
 
 function updateExercise(e){
 	e.preventDefault();
 	let form = document.updateExerciseForm;
-	let updatedExercise = {
+	let updatedExercise = 
+		 {
 		id: form.exerciseId.value,
-		name: form.name.value,
+        name: form.name.value,
 		distance: form.distance.value,
 		duration: form.duration.value,
 		repetitions: form.repetitions.value
-	}
+    }
+	
 	console.log(updatedExercise);
 	sendUpdatedExercise(updatedExercise);	
 	
 }
 
 function sendUpdatedExercise(updatedExercise){
-	
-	let exerciseIdToUpdate = document.updateExerciseForm.exerciseId.value;
+	let exerciseUpdateId = document.updateExerciseForm.exerciseId.value;
 	let xhr = new XMLHttpRequest();
-	xhr.open('PUT', 'api/exercise/' + exerciseIdToUpdate, true);
+	
+	xhr.open('PUT', 'api/exercise/' + exerciseUpdateId);
+	
 
 	xhr.onreadystatechange = function() {
   	if (xhr.readyState === 4 ) {
-	console.log('line 82 hi')
-	console.log(xhr.status + 'line 83')
-    	if ( xhr.status == 400 || xhr.status == 201 ) { 
-		console.log('line 84 hi')
+    	if ( xhr.status == 200 || xhr.status == 201 ) { 
       	let updatedExercise = JSON.parse(xhr.responseText);
       	console.log(updatedExercise);
       	displayExercise(updatedExercise);
     }
     else {
-      	displayError("Error updating exercise: " + xhr.status + xhr.statusText);
+      	displayError("Error creating exercise: " + xhr.status + xhr.statusText);
     }
   }
 };
 	xhr.setRequestHeader("Content-type", "application/json"); 
-	console.log("hi");
-	xhr.send(updatedExercise);
+	xhr.send(JSON.stringify(updatedExercise));
 	
 }
 
-function findExerciseById() {
-		document.exerciseForm.findExerciseButton.addEventListener('click', function(event) {
-		event.preventDefault();
-		let exerciseId = document.exerciseForm.exerciseId.value;
-		if (!isNaN(exerciseId) && exerciseId > 0) {
-			getExercise(exerciseId);
-		}
-	});}
+
+function displayUpdatedExercise(updatedExercise) {
+	let dataDiv = document.getElementById('updatedData');
+	dataDiv.textContent = '';
+
+
+	let listOfExerciseData = ["Id: " + updatedExercise.id, "Name: " + updatedExercise.name, "Distance: " + updatedExercise.distance, "Duration: " + updatedExercise.duration, "Repetitions: " + updatedExercise.repetitions];
+	let ul = document.createElement('ul');
+	listOfExerciseData.forEach(function(value) {
+
+		let li = document.createElement('li');
+		li.textContent = value;
+		ul.appendChild(li);
+
+	});
+	dataDiv.appendChild(ul);
+
+}
 	
+//------------------------------------------------ List All -----------------------------------
 
 function loadExerciseList(){
 	let xhr = new XMLHttpRequest();
@@ -158,7 +176,16 @@ function displayExerciseList(exerciseList) {
 	}
 }
 
+//------------------------------------------Find By Id-----------------
 
+function findExerciseById() {
+		document.exerciseForm.findExerciseButton.addEventListener('click', function(event) {
+		event.preventDefault();
+		let exerciseId = document.exerciseForm.exerciseId.value;
+		if (!isNaN(exerciseId) && exerciseId > 0) {
+			getExercise(exerciseId);
+		}
+	});}
 
 function getExercise(exerciseId) {
 	
@@ -186,7 +213,7 @@ function displayExercise(exercise) {
 	let dataDiv = document.getElementById('exerciseData');
 	dataDiv.textContent = '';
 
-
+	console.log('Hi line 216')
 	let listOfExerciseData = ["Id: " + exercise.id, "Name: " + exercise.name, "Distance: " + exercise.distance, "Duration: " + exercise.duration, "Repetitions: " + exercise.repetitions];
 	let ul = document.createElement('ul');
 	listOfExerciseData.forEach(function(value) {
@@ -200,6 +227,7 @@ function displayExercise(exercise) {
 
 }
 
+//---------------------------------------------------------Delete By ID---------------
 
 function deleteExerciseById() {
 		document.deleteExerciseForm.deleteExerciseButton.addEventListener('click', function(event) {

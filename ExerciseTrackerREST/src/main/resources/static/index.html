@@ -41,6 +41,7 @@
 		
 	</div>
 	
+	
 	<h4>Add New Exercise</h4>
 	
 	<form name="newExerciseForm">
@@ -64,7 +65,7 @@
 		<h4>Update Exercise</h4>
 	
 	<form name="updateExerciseForm">
-		<label for="deleteExercise_IdField">Please Enter Id Number</label><br>
+		<label for="updateExercise_IdField">Please Enter Id Number</label><br>
 		<input type="number" name="exerciseId"><br><br>
 	
 	
@@ -79,10 +80,13 @@
 		
 		<label for="repetitions">Exercise Repetitions</label><br>
 		<input type="text" name="repetitions"><br><br>
-		<button name="updateExerciseButton">Update Exercise</button>
+		<button type=submit name="updateExerciseButton">Update Exercise</button>
 	
 	
 		</form>
+		
+		<div id="updatedData"></div>
+	
 	
 	<h4>Delete Exercise By Id</h4>
 	
@@ -91,7 +95,9 @@
 		<input type="number" name="exerciseId"><br><br>
 		<button name="deleteExerciseButton">Delete Exercise</button>
 	
-	</form>
+	</form><br><br>
+	
+
 	
 	
 	
