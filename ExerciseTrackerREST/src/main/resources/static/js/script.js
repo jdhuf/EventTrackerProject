@@ -7,6 +7,7 @@ function init(){
 	loadExerciseList();
 	loadNewExercise();
 	loadUpdatedExercise();
+	
 	deleteExerciseById();
 	}
 
@@ -49,6 +50,7 @@ function sendNewExercise(newExercise){
       	let newExercise = JSON.parse(xhr.responseText);
       	console.log(newExercise);
       	displayExercise(newExercise);
+      	loadExerciseList();
     }
     else {
       	displayError("Error creating exercise: " + xhr.status + xhr.statusText);
@@ -57,6 +59,7 @@ function sendNewExercise(newExercise){
 };
 	xhr.setRequestHeader("Content-type", "application/json"); 
 	xhr.send(JSON.stringify(newExercise));
+	
 	
 }
 
@@ -96,6 +99,7 @@ function sendUpdatedExercise(updatedExercise){
       	let updatedExercise = JSON.parse(xhr.responseText);
       	console.log(updatedExercise);
       	displayExercise(updatedExercise);
+      	loadExerciseList();
     }
     else {
       	displayError("Error creating exercise: " + xhr.status + xhr.statusText);
@@ -104,6 +108,7 @@ function sendUpdatedExercise(updatedExercise){
 };
 	xhr.setRequestHeader("Content-type", "application/json"); 
 	xhr.send(JSON.stringify(updatedExercise));
+	
 	
 }
 
@@ -127,6 +132,7 @@ function displayUpdatedExercise(updatedExercise) {
 }
 	
 //------------------------------------------------ List All -----------------------------------
+
 
 function loadExerciseList(){
 	let xhr = new XMLHttpRequest();
