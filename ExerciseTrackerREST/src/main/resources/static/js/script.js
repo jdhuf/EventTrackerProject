@@ -159,10 +159,12 @@ function displayExerciseList(exerciseList) {
 	for (let exercise of exerciseList) {
 		
 		let tr = document.createElement('tr');
-		tbody.appendChild(tr);		
+		tbody.appendChild(tr);
+		
+				
 		let td = document.createElement('td');				
 		td.textContent = exercise.id;				
-		tr.appendChild(td);	
+		tr.appendChild(td);
 			
 		td = document.createElement('td');
 		td.textContent = exercise.name;		
@@ -179,7 +181,17 @@ function displayExerciseList(exerciseList) {
 		td = document.createElement('td');
 		td.textContent = exercise.repetitions;
 		tr.appendChild(td);
+		
+		tbody.addEventListener('click', function(){
+			console.log('clicked row');
+			
+		});
+		
+		
 	}
+	console.log(tbody);
+	console.log(tbody.children)
+	
 }
 
 //------------------------------------------Find By Id-----------------
@@ -251,19 +263,20 @@ function deleteExercise(exerciseToDeleteId) {
 	xhr.open('DELETE', 'api/exercise/' + exerciseToDeleteId);
 	xhr.onreadystatechange = function() {
 		if (xhr.readyState === 4) {
-			if (xhr.status === 200 && xhr.responseText) {
-				let exercise = JSON.parse(xhr.responseText);
-				displayExercise(exercise);
-
+			
+			loadExerciseList();
+			console.log('line 268')
 			}
+			
 			else {
 				displayError('Exercise not found.');
 
 			}
 
-		}
+		
 	}
 
 	xhr.send();
+	
 }
 
