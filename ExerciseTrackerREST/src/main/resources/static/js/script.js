@@ -9,6 +9,8 @@ function init(){
 	loadUpdatedExercise();
 	
 	deleteExerciseById();
+	
+
 	}
 
 
@@ -182,15 +184,28 @@ function displayExerciseList(exerciseList) {
 		td.textContent = exercise.repetitions;
 		tr.appendChild(td);
 		
-		tbody.addEventListener('click', function(){
-			console.log('clicked row');
+		
+		tr.addEventListener('click', function(e){
 			
+			console.log('clicked row ' );
+			e.preventDefault();
+			console.log(this)
+			let id = tbody.children[0].children[0].textContent;
+			console.log(id);		
+			getExercise(id);
 		});
 		
 		
 	}
-	console.log(tbody);
-	console.log(tbody.children)
+	
+	console.log(tbody.children[0]);
+	console.log(tbody.children[0].children[0].textContent);
+	let number1 = Number.parseInt(tbody.children[0].children[4].textContent);
+	let number2 = Number.parseInt(tbody.children[1].children[4].textContent);
+	let sum = number1 + number2;
+	console.log(sum);
+
+	//console.log((tbody.children[0].children[4].textContent.value) + (tbody.children[1].children[4].valueOf(textContent))
 	
 }
 
@@ -231,7 +246,7 @@ function displayExercise(exercise) {
 	let dataDiv = document.getElementById('exerciseData');
 	dataDiv.textContent = '';
 
-	console.log('Hi line 216')
+	
 	let listOfExerciseData = ["Id: " + exercise.id, "Name: " + exercise.name, "Distance: " + exercise.distance, "Duration: " + exercise.duration, "Repetitions: " + exercise.repetitions];
 	let ul = document.createElement('ul');
 	listOfExerciseData.forEach(function(value) {
@@ -272,11 +287,13 @@ function deleteExercise(exerciseToDeleteId) {
 				displayError('Exercise not found.');
 
 			}
-
 		
 	}
 
 	xhr.send();
 	
 }
+
+
+//----------------------------------------------------------Totals------------------------------
 

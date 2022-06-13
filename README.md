@@ -13,14 +13,17 @@ This program allows a user to track exercise. The code is in the first stages of
 * MySQL Workbench
 * Mac Terminal
 * REST API
+* Javascript
+* HTML
+* XHR
 
 ## How to Use
 
-After uploading code to SpringToolSuite4, the user can run the program and test CRUD operations using Postman. The user can also verify changes to the database using MySQL commands from Terminal.
+The user can perform basic CRUD operations using the fields and buttons provided on the launched application.
 
-The routes necessary for testing the operations are listed below.
+The routes necessary for testing the operations locally are listed below.
 
-Expected Routes
+Expected Routes for Postman Testing
 
 | Return Type       | Route                                         | Functionality                    |  
 |-------------------|-----------------------------------------------|----------------------------------|
@@ -32,4 +35,4 @@ Expected Routes
 
 ## Lessons Learned
 
-Through this assignment I gained a better understanding of the relationship between controllers, services, and repositories. I also gained a better understanding of how to test CRUD operations using Postman.
+Through this assignment I am learning how to add scripts and to navigate through the DOM to perform operations. I am learning how to troubleshoot code using the developer's console in Chrome.
