@@ -3,14 +3,17 @@ window.addEventListener('load', function(e){
 });
 
 function init(){
+	
+	
 	findExerciseById();
 	loadExerciseList();
+	
 	loadNewExercise();
 	loadUpdatedExercise();
 	
 	deleteExerciseById();
 	
-
+	
 	}
 
 
@@ -158,7 +161,16 @@ function loadExerciseList(){
 function displayExerciseList(exerciseList) {
 	let tbody = document.getElementById('exerciseRows');
 	tbody.textContent = '';
+	let totalDist = 0;
+	let totalDur = 0;
+	let totalReps = 0;
+	
+	
 	for (let exercise of exerciseList) {
+		
+		totalDist += exercise.distance;
+		totalDur += exercise.duration;
+		totalReps += exercise.repetitions;
 		
 		let tr = document.createElement('tr');
 		tbody.appendChild(tr);
@@ -184,24 +196,51 @@ function displayExerciseList(exerciseList) {
 		td.textContent = exercise.repetitions;
 		tr.appendChild(td);
 		
+
+//---------------------------totals----------------------------------------------------------		
+		let tbodyDist = document.getElementById('totalDist');
+		let tbodyDur = document.getElementById('totalDur')
+		let tbodyReps = document.getElementById('totalReps');
+		
+		
+		tbodyDist.textContent = "Distance: " + totalDist;
+		tbodyDur.textContent = "Duration: " + totalDur;
+		tbodyReps.textContent = "Repetitions: " + totalReps;
+//--------------------------------------------------------------------------------------------		
+	
+		
+		
+		
+		
+		
+		console.log(Number.parseInt(exercise.repetitions))
+	
+
 		
 		tr.addEventListener('click', function(e){
 			
 			console.log('clicked row ' );
 			e.preventDefault();
-			console.log(this)
-			let id = tbody.children[0].children[0].textContent;
-			console.log(id);		
+			
+			
+			console.log(e.target);
+			let id = e.target.parentElement.firstElementChild.textContent;
+				console.log(id);
 			getExercise(id);
+			
 		});
 		
 		
 	}
-	
+	console.log(totalReps);
+	console.log(document.getElementById('exerciseData').textContent)
 	console.log(tbody.children[0]);
 	console.log(tbody.children[0].children[0].textContent);
 	let number1 = Number.parseInt(tbody.children[0].children[4].textContent);
 	let number2 = Number.parseInt(tbody.children[1].children[4].textContent);
+	
+	let numOfReps = Number.parseInt(tbody.children[1].children[4].textContent);
+	
 	let sum = number1 + number2;
 	console.log(sum);
 
@@ -296,4 +335,9 @@ function deleteExercise(exerciseToDeleteId) {
 
 
 //----------------------------------------------------------Totals------------------------------
+
+
+
+
+
 
