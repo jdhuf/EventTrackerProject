@@ -1,16 +1,5 @@
 
-<div class="container-fluid">
 
-<h1>Exercise Tracker Home</h1>
-
-<h4>Exercises</h4>
-  <ul>
-      <li *ngFor="let exercise of exercises" >{{exercise.name}}</li>
-
-
-  </ul>
-
-</div>
 
 <h1 class="btn-success" style="text-align: center;">Exercise Tracker <span class="badge bd-primary"></span> </h1>
 
@@ -39,4 +28,14 @@
     </tbody>
   </table>
 
+  <form id="addExerciseForm" *ngIf="!selected">
+
+    <input class="form-control" type="text" name="task" placeholder="Exercise Name" [(ngModel)]="newExercise.name" /><br />
+
+
+    <button class="btn btn-success" (click)="addExercise(newExercise)">Add New</button>
+
+  </form>
+
 </div>
+
