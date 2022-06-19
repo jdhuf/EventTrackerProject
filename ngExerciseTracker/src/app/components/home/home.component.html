@@ -11,3 +11,32 @@
   </ul>
 
 </div>
+
+<h1 class="btn-success" style="text-align: center;">Exercise Tracker <span class="badge bd-primary"></span> </h1>
+
+<div id="table">
+  <table class="table table-striped table-hover" >
+    <thead class="table-dark">
+        <tr>
+          <th>ID</th>
+          <th>Name</th>
+          <th>Distance</th>
+          <th>Duration</th>
+           <th>Repetitions</th>
+         </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let exercise of exercises" >
+
+        <td>{{exercise.id}}</td>
+        <td>{{exercise.name}}</td>
+        <td>{{exercise.distance}}</td>
+        <td>{{exercise.duration}}</td>
+        <td>{{exercise.repetitions}}</td>
+
+
+      </tr>
+    </tbody>
+  </table>
+
+</div>
