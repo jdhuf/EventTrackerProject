@@ -22,6 +22,7 @@
         <td>{{exercise.distance}}</td>
         <td>{{exercise.duration}}</td>
         <td>{{exercise.repetitions}}</td>
+        <td><button class="btn btn-danger"(click)="deleteExercise(exercise.id)">X</button></td>
 
 
       </tr>
@@ -34,6 +35,27 @@
 
 
     <button class="btn btn-success" (click)="addExercise(newExercise)">Add New</button>
+
+  </form>
+
+  <div id="detailView" *ngIf="selected && !editExercise">
+    <p>{{selected.id}}</p>
+    <p>{{selected.name}}</p>
+    <p>{{selected.distance}}</p>
+    <p>{{selected.duration}}</p>
+    <p>{{selected.repetitions}}</p>
+
+    <button class="btn btn-success" (click)="displayTable()">Back</button>
+    <button class="btn btn-primary" (click)="setEditExercise()">Edit</button>
+  </div>
+
+  <form id="editExerciseForm" *ngIf="editExercise">
+    <!-- <input type="text" name="id" placeholder="Id" [(ngModel)]="newTodo.id" /><br /> -->
+    <input type="text" name="exercise" placeholder="Exercise" [(ngModel)]="editExercise.name" /><br />
+    <input type="text" name="description" placeholder="Distance" [(ngModel)]="editExercise.distance" /><br />
+
+    <button (click)="updateExercise(editExercise)">Save</button>
+    <button (click)="editExercise= null">Cancel</button>
 
   </form>
 

@@ -1,19 +1,19 @@
 export class Exercise {
 
-  id: number | null;
-  name: string | null;
-  distance: number | null;
-  duration: number | null;
-  repetitions: number | null;
+  id: number;
+  name: string;
+  distance: number;
+  duration: number;
+  repetitions: number;
 // TODO: other properties of entity
 
 
 constructor(
-  id: number | null = 0,
-  name: string | null = '',
-  distance: number | null = 0,
-  duration: number | null = 0,
-  repetitions: number | null = 0
+  id: number = 0,
+  name: string = '',
+  distance: number = 0,
+  duration: number = 0,
+  repetitions: number = 0
 
 )
 
