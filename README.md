@@ -1,10 +1,13 @@
 # EventTrackerProject
-Testing REST API CRUD Operations
+
+Skill Distillery Angular Event Tracker Project
 
 ### Description
-This program allows a user to track exercise. The code is in the first stages of development and currently has one entity called exercise that corresponds to a table called exercise in a database. The code uses REST API to operate CRUD (Create, Read, Update, Delete) functions.
+
+This program allows a user to track exercise. The program has one entity called exercise that corresponds to a table called exercise in a database. The program allows the user to perform CRUD (Create, Read, Update, Delete) operations with the exercise entity. In its most updated form, the program displays data and user interface using Angular front-end technology for deployment as a fully functional web application.
 
 ## Technology Used
+
 * Java
 * SpringToolSuite4
 * Spring Boot
@@ -14,8 +17,11 @@ This program allows a user to track exercise. The code is in the first stages of
 * Mac Terminal
 * REST API
 * Javascript
+* Typescript
 * HTML
 * XHR
+* Angular
+* AWS
 
 ## How to Use
 
@@ -35,4 +41,4 @@ Expected Routes for Postman Testing
 
 ## Lessons Learned
 
-Through this assignment I am learning how to add scripts and to navigate through the DOM to perform operations. I am learning how to troubleshoot code using the developer's console in Chrome.
+Through this assignment I have learned how to add scripts and to navigate through the DOM to perform operations. I have learned how to troubleshoot code using the developer's console in Chrome. I have gained experience using Angular and learned how to perform basic operations using this technology.
