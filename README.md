@@ -42,3 +42,7 @@ Expected Routes for Postman Testing
 ## Lessons Learned
 
 Through this assignment I have learned how to add scripts and to navigate through the DOM to perform operations. I have learned how to troubleshoot code using the developer's console in Chrome. I have gained experience using Angular and learned how to perform basic operations using this technology.
+
+## Deployed App URL (Current as of 20 June 2022)
+
+http://54.205.250.124:8080/ExerciseTrackerREST/
