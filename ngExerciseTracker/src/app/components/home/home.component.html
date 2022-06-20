@@ -2,7 +2,10 @@
 
 
 <h1 class="btn-success" style="text-align: center;">Exercise Tracker <span class="badge bd-primary"></span> </h1>
-<h1 class="btn-primary" style="text-align: center;" > Total Exercises: {{getTotalNumExercises()}}</h1>
+<h3 > Total Exercises: {{getTotalNumExercises()}}</h3>
+<h4 > Total Distance: {{getSumDistance()}}</h4>
+<h4 > Total Duration: {{getSumDuration()}}</h4>
+<h4 > Total Repetitions: {{getSumRepetitions()}}</h4><br />
 
 <div id="table">
   <table class="table table-striped table-hover" *ngIf="!selected">
@@ -17,13 +20,15 @@
          </tr>
     </thead>
     <tbody>
-      <tr *ngFor="let exercise of exercises" (click)="displayExercise(exercise)">
+      <tr *ngFor="let exercise of exercises" >
 
-        <td>{{exercise.id}}</td>
-        <td>{{exercise.name}}</td>
-        <td>{{exercise.distance}}</td>
-        <td>{{exercise.duration}}</td>
-        <td>{{exercise.repetitions}}</td>
+        <td (click)="displayExercise(exercise)">{{exercise.id}}</td>
+        <td (click)="displayExercise(exercise)">{{exercise.name}}</td>
+        <td (click)="displayExercise(exercise)">{{exercise.distance}}</td>
+        <td (click)="displayExercise(exercise)">{{exercise.duration}}</td>
+        <td (click)="displayExercise(exercise)">{{exercise.repetitions}}</td>
+
+
         <td><button class="btn btn-danger"(click)="deleteExercise(exercise.id)">X</button></td>
 
 
@@ -34,30 +39,31 @@
   <form id="addExerciseForm" *ngIf="!selected">
     <label for="Exercise Name">Name: </label><br>
     <input class="form-control" type="text" name="name" placeholder="Exercise Name" [(ngModel)]="newExercise.name" /><br /><br />
-    <label for="Exercise Distance">Distance: </label><br />
+    <label for="Exercise Distance">Distance (must be integer): </label><br />
     <input class="form-control" type="text" name="distance" placeholder="Exercise Distance" [(ngModel)]="newExercise.distance" /><br /><br />
-    <label for="Exercise Name">Duration: </label><br />
+    <label for="Exercise Name">Duration (must be integer): </label><br />
     <input class="form-control" type="text" name="duration" placeholder="Exercise Duration" [(ngModel)]="newExercise.duration" /><br /><br />
-    <label for="Exercise Name">Repetitions: </label><br />
+    <label for="Exercise Name">Repetitions (must be integer): </label><br />
     <input class="form-control" type="text" name="repetitions" placeholder="Exercise Repetitions" [(ngModel)]="newExercise.repetitions" /><br /><br />
 
-    <button class="btn btn-success" (click)="addExercise(newExercise)">Add New Exercise</button>
+    <button class="btn btn-success" (click)="addExercise(newExercise)">Add New Exercise</button><br /><br />
 
   </form>
 
   <div id="detailView" *ngIf="selected && !editExercise">
-    <p>{{selected.id}}</p>
-    <p>{{selected.name}}</p>
-    <p>{{selected.distance}}</p>
-    <p>{{selected.duration}}</p>
-    <p>{{selected.repetitions}}</p>
+    <p>ID: {{selected.id}}</p>
+    <p>Name: {{selected.name}}</p>
+    <p>Distance: {{selected.distance}}</p>
+    <p>Duration: {{selected.duration}}</p>
+    <p>Repetitions: {{selected.repetitions}}</p>
 
     <button class="btn btn-success" (click)="displayTable()">Back</button>
-    <button class="btn btn-primary" (click)="setEditExercise()">Edit</button>
+    <button class="btn btn-primary" (click)="setEditExercise()">Edit</button><br /><br />
   </div>
 
   <form class="form-control" id="editExerciseForm" *ngIf="editExercise">
     <h3>Edit Exercise</h3>
+    <p>ID: {{editExercise.id}}</p>
     <label for="Exercise Name">Name: </label><br>
     <input type="text" name="exercise" placeholder="Exercise" [(ngModel)]="editExercise.name" /><br /><br />
     <label for="Exercise Distance">Distance: </label><br />
@@ -68,9 +74,10 @@
     <input type="text" name="description" placeholder="Distance" [(ngModel)]="editExercise.repetitions" /><br /><br />
 
     <button class="btn btn-success" (click)="updateExercise(editExercise)">Save</button>
-    <button class="btn btn-primary" (click)="editExercise= null">Cancel</button>
+    <button class="btn btn-primary" (click)="displayTable()">Cancel</button><br /><br />
+    <!-- <button class="btn btn-primary" (click)="editExercise= null">Cancel</button><br /><br /> -->
 
   </form>
 
 </div>
-
+<h1 class="btn-success" style="text-align: center;"> Exercise Tracker Copyright 2022 <span class="badge bd-primary"></span> </h1>

@@ -2,6 +2,7 @@ import { ExerciseService } from './../../services/exercise.service';
 import { Component, OnInit } from '@angular/core';
 import { Exercise } from 'src/app/models/exercise';
 import { ActivatedRoute, Router } from '@angular/router';
+import { distanceAndSkiddingToXY } from '@popperjs/core/lib/modifiers/offset';
 
 @Component({
   selector: 'app-home',
@@ -13,6 +14,8 @@ export class HomeComponent implements OnInit {
 exercises: Exercise [] = [];
 newExercise: Exercise = new Exercise();
 editExercise: null | Exercise = null;
+
+
 
 title = "Amazing Exercise Tracker";
 selected: null | Exercise = null;
@@ -92,6 +95,32 @@ selected: null | Exercise = null;
   getTotalNumExercises() {
     return this.exercises.length;
   }
+
+  getSumDistance(): number {
+    let sum = 0;
+    for (let i = 0; i < this.exercises.length; i++) {
+      sum += this.exercises[i].distance;
+    }
+    return sum;
+  }
+
+  getSumDuration(): number {
+    let sum = 0;
+    for (let i = 0; i < this.exercises.length; i++) {
+      sum += this.exercises[i].duration;
+    }
+    return sum;
+  }
+
+  getSumRepetitions(): number {
+    let sum = 0;
+    for (let i = 0; i < this.exercises.length; i++) {
+      sum += this.exercises[i].repetitions;
+    }
+    return sum;
+  }
+
+
 
   displayExercise(exercise: Exercise) {
     this.selected = exercise;
